@@ -10,7 +10,9 @@ import './App.css'
 export const App = () => {
   const [dog, setDog] = useState("https://images.dog.ceo/breeds/dingo/n02115641_4677.jpg")
   const changeDog = () => {
-    setDog("https://images.dog.ceo/breeds/shiba/shiba-19.jpg")
+    fetch("https://dog.ceo/api/breeds/image/random")
+      .then(res => res.json())
+      .then((result) => setDog(result.message))
   }
   return (
     <div>
