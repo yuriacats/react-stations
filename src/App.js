@@ -16,7 +16,7 @@ export const App = () => {
   }
   return (
     <div>
-      <header>
+      <header className='base'>
         <h1>yuriacats's AppLinks</h1>
         <button onClick={changeDog} >更新！！</button>
         <p>犬の画像が今は表示されています。</p>
