@@ -9,7 +9,7 @@ const BreedsSelect = (props) => {
 
             <select
                 name="breed"
-                onChange={(e) => setSelectedBreed(e.target.selectedOptions[0].label)}
+                onChange={(e) => setSelectedBreed(props.breeds[e.target.selectedIndex])}
             >
                 {props.breeds.map(breed => (
                     <option
@@ -23,4 +23,4 @@ const BreedsSelect = (props) => {
     )
 }
 
-export default BreedsSelect
+export default BreedsSelect;
