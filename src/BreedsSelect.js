@@ -1,15 +1,31 @@
 // DO NOT DELETE
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import DogImage from "./DogImage"
 
-const BreedsSelect = (props) => {
-    const [selectedBreed, setSelectedBreed] = useState('')
+export const BreedsSelect = (props) => {
+    const [selectedBreed, setSelectedBreed] = useState('affenpinscher')
+    const [dogImages, setDogImages] = useState([""])
+    const SelectBreed = (e) => {
+        const targetValue = e.target.value;
+        setSelectedBreed(targetValue);
+    }
+    useEffect(() => {
+        console.log(dogImages)
 
+    }
+        , [dogImages])
+    const huga = () => {
+        const url = "https://dog.ceo/api/breed/" + selectedBreed + "/images/random/12"
+        fetch(url)
+            .then(res => res.json())
+            .then(mes => setDogImages(mes.message))
+    }
     return (
         <div>
-
             <select
                 name="breed"
-                onChange={(e) => setSelectedBreed(props.breeds[e.target.selectedIndex])}
+                value={selectedBreed}
+                onChange={SelectBreed}
             >
                 {props.breeds.map(breed => (
                     <option
@@ -18,7 +34,11 @@ const BreedsSelect = (props) => {
                     >{breed}</option>
                 ))}
             </select>
-            <p>{selectedBreed}</p>
+            <button onClick={huga}>表示</button><br />
+            {dogImages.map((url) =>
+                <DogImage url={url} />
+            )
+            }
         </div>
     )
 }

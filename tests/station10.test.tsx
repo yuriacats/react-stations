@@ -38,6 +38,7 @@ describe('<App />', () => {
     act(() => {
       selectTag.props.onChange({ target: { value } })
     })
+    console.log(selectTag.props)
     expect(selectTag.props.value).toBe(value)
   })
 })
