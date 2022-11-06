@@ -9,7 +9,6 @@ export const DogListContainer = () => {
             .then(mes => {
                 const list = Object.keys(mes.message)
                 setBreeds(list)
-                console.log("test")
             })
 
     }, []
